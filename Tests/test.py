@@ -9,9 +9,13 @@ from app import app
 class FlaskAppTest(unittest.TestCase):
     """Test cases for the Flask App."""
 
+    # stub client attribute so linters see it
+    client = None
+
     def setUp(self):
-        self.app = app.test_client()
-        self.app.testing = True
+        # use 'self.client' throughout tests
+        self.client = app.test_client()
+        self.client.testing = True
 
     def test_homepage(self):
         """Get / should return the welcome message 
@@ -40,6 +44,7 @@ class FlaskAppTest(unittest.TestCase):
             b'Invalid input. Please provide valid integers for lower and upper bounds.',
             response.data
         )
+
     def test_sell_arrests_invalid_int(self):
         """Get /<int>/<non-int> should return the invalid-input message."""
         response = self.client.get('/1/b')
