@@ -8,12 +8,9 @@ from app import app
 
 class FlaskAppTest(unittest.TestCase):
     """Test cases for the Flask App."""
-
-    # stub client attribute so linters see it
     client = None
 
     def setUp(self):
-        # use 'self.client' throughout tests
         self.client = app.test_client()
         self.client.testing = True
 
