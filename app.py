@@ -1,5 +1,5 @@
-from flask import Flask
 import sys
+from flask import Flask
 import ProductionCode.data_processor as data_processor
 
 app = Flask(__name__)
@@ -35,11 +35,9 @@ def sell_arrests(lowerBoundCount, upperBoundCount):
     except ValueError:
         return "Invalid input. Please provide valid integers for lower and upper bounds."
 
-"""Code for the Command Line Interface"""
 def main():
     """Runs the Program"""
     process_input()
-
 
 def process_input():
     """Takes in the command line input and calls
@@ -53,7 +51,6 @@ def process_input():
     else:
         print_usage_statement()
 
-
 def input_meeting_helper():
     """Serves as a helper for calling the production code method meeting_frequency/count()"""
     if len(sys.argv) == 3:
@@ -63,7 +60,6 @@ def input_meeting_helper():
             print(str(data_processor.meeting_count()) + " meetings attended")
     else:
         print_usage_statement()
-
 
 def input_serrest_helper():
     """Serves as a helper for calling the production code method drug_sale_arrests()"""
@@ -82,11 +78,9 @@ def input_serrest_helper():
     else:
         print_usage_statement()
 
-
 def get_sys_argv_length():
     """gives the numebr of commands in the comand line input"""
     return len(sys.argv)
-
 
 def print_usage_statement():
     """Prints the class usage statement when improper input is given"""
