@@ -1,7 +1,7 @@
 """This is the main file for the Flask App that serves as 
 a web interface for the data processing functions."""
-from app import app
 import unittest
+from app import app
 
 class FlaskAppTest(unittest.TestCase):
     """Test cases for the Flask App."""
