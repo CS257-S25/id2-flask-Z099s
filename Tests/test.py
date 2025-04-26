@@ -1,4 +1,7 @@
-"""This is the main file for the Flask App that serves as 
+"""
+test.py
+
+This is the main file for the Flask App that serves as 
 a web interface for the data processing functions."""
 import unittest
 from app import app
@@ -7,8 +10,8 @@ class FlaskAppTest(unittest.TestCase):
     """Test cases for the Flask App."""
 
     def setUp(self):
-        app.testing = True
-        self.client = app.test_client()
+        self.app = app.test_client()
+        self.app.testing = True
 
 def test_homepage(self):
     """Get / should return the welcome message 
