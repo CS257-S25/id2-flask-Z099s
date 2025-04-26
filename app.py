@@ -1,6 +1,6 @@
 import sys
 from flask import Flask
-import ProductionCode.data_processor as data_processor
+from ProductionCode import data_processor
 
 app = Flask(__name__)
 
@@ -16,18 +16,18 @@ def home():
         "1. To count number of people getting arrested by selling drugs please enter: <br>"
         "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>your_url/lowerBoundCount/upperBoundCount</i><br>"
     )
-data=[]
-
+    
 def load_data():
-    """Loads the data from the file into a global variable"""
+    """Loads the data from the file and returns it."""
     data_processor.make_data_array()
-    global data
-    data = data_processor.data
-load_data()
+    return data_processor.data
+
+data = load_data()
 
 @app.route('/<lowerBoundCount>/<upperBoundCount>', strict_slashes=False)
 def sell_arrests(lowerBoundCount, upperBoundCount):
-    """Returns the number of subjects arrested on drug charges a number of times in the range lower-upper"""
+    """Returns the number of subjects arrested on drug charges a number of 
+    times in the range lower-upper"""
     try:
         lower = int(lowerBoundCount)
         upper = int(upperBoundCount)
@@ -87,7 +87,7 @@ def print_usage_statement():
     print(
         "Usage:"
         '\npython3 cl.py --meeting ["frequency", "count"]'
-        "\npython3 cl.py --sellArrests lowerBoundCount upperBoundCount"
+        "\npython3 cl.py --sellArrests Lower_Bound_Count Lpper_Bound_Count "
     )
 
 if __name__ == '__main__':
