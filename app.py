@@ -1,6 +1,5 @@
 """This is the main file for the Flask App that serves as a web 
 interface for the data processing functions."""
-import sys
 from flask import Flask
 from ProductionCode import data_processor
 
@@ -18,7 +17,8 @@ def home():
         "1. To get all the raw data, please go to:<br>"
         "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>your_url/dataOverview</i><br>"
         "2. To count number of people getting arrested by selling drugs please go to: <br>"
-        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>your_url/sellArrests/lower_bound_count/upper_bound_count</i><br>"
+        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+        "<i>your_url/sellArrests/lower_bound_count/upper_bound_count</i><br>"
     )
 
 def load_data():
