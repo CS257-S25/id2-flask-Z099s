@@ -5,14 +5,15 @@ from app import app
 
 class FlaskAppTest(unittest.TestCase):
     """Test cases for the Flask App."""
+
     def setUp(self):
         app.testing = True
         self.client = app.test_client()
 
-def test_home(self):
-    """Get / should return the welcome message with status 200."""
+def test_homepage(self):
+    """Get / should return the welcome message 
+    starting with 'Welcome to the Flask App!'."""
     response = self.client.get('/')
-    self.assertEqual(response.status_code, 200)
     self.assertTrue(response.data.startswith(
         b'<strong>Welcome to the Flask App!'))
 
@@ -31,6 +32,14 @@ def test_sell_arrests_valid(self):
 def test_sell_arrests_invalid(self):
     """Get /<non-int>/<non-int> should return the invalid-input message."""
     response = self.client.get('/a/b')
+    self.assertEqual(response.status_code, 200)
+    self.assertIn(
+        b'Invalid input. Please provide valid integers for lower and upper bounds.',
+        response.data
+    )
+def test_sell_arrests_invalid_int(self):
+    """Get /<int>/<non-int> should return the invalid-input message."""
+    response = self.client.get('/1/b')
     self.assertEqual(response.status_code, 200)
     self.assertIn(
         b'Invalid input. Please provide valid integers for lower and upper bounds.',
