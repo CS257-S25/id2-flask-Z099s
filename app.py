@@ -6,12 +6,18 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
+    """
+    Home page for the Flask App.
+    Returns:
+        str: Welcome message and instructions for using the app.
+    """
     return (
         "<strong>Welcome to the Flask App! Below are some example commands:</strong><br>"
-        "1. To count number of sellArresets please enter: <br>"
+        "1. To count number of people getting arrested by selling drugs please enter: <br>"
         "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>your_url/lowerBoundCount/upperBoundCount</i><br>"
     )
 data=[]
+
 def load_data():
     """Loads the data from the file into a global variable"""
     data_processor.make_data_array()
