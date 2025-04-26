@@ -1,13 +1,16 @@
-from app import *
+"""This is the main file for the Flask App that serves as 
+a web interface for the data processing functions."""
+from app import app
 import unittest
 
-class flask_app_test(unittest.TestCase):
+class FlaskAppTest(unittest.TestCase):
+    """Test cases for the Flask App."""
     def setUp(self):
         app.testing = True
         self.client = app.test_client()
 
 def test_home(self):
-    """GET / should return the welcome message with status 200."""
+    """Get / should return the welcome message with status 200."""
     response = self.client.get('/')
     self.assertEqual(response.status_code, 200)
     self.assertTrue(response.data.startswith(
