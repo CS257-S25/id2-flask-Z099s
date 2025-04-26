@@ -1,4 +1,5 @@
-"""This is the main file for the Flask App that serves as a web interface for the data processing functions."""
+"""This is the main file for the Flask App that serves as a web 
+interface for the data processing functions."""
 import sys
 from flask import Flask
 from ProductionCode import data_processor
@@ -26,12 +27,12 @@ def load_data():
 data = load_data()
 
 @app.route('/<lowerBoundCount>/<upperBoundCount>', strict_slashes=False)
-def sell_arrests(Lower_Bound_Count, Upper_Bound_Count):
+def sell_arrests(lower_bound_count, upper_bound_count):
     """Returns the number of subjects arrested on drug charges a number of 
     times in the range lower-upper"""
     try:
-        lower = int(Lower_Bound_Count)
-        upper = int(Upper_Bound_Count)
+        lower = int(lower_bound_count)
+        upper = int(upper_bound_count)
         return str(data_processor.drug_sale_arrests(lower, upper)) + " people"
     except ValueError:
         return "Invalid input. Please provide valid integers for lower and upper bounds."
