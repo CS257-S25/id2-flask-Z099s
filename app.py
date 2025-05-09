@@ -22,6 +22,9 @@ def home():
         "2. To count number of people getting arrested by selling drugs please go to: <br>"
         "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
         "<i>your_url/sellArrests/lower_bound_count/upper_bound_count</i><br>"
+        "* lower_bound_count and upper_bound_count are the number of times a person has been "
+        "arrested for selling drugs. <br>"
+        "* Data input should be integer ranging from 0-130"
     )
 
 def load_data():
@@ -36,7 +39,7 @@ def data_overview():
     """Returns the overview of the data."""
     return data
 
-@app.route('/<lower_bound_count>/<upper_bound_count>', strict_slashes=False)
+@app.route('/sellArrests/<lower_bound_count>/<upper_bound_count>', strict_slashes=False)
 def sell_arrests(lower_bound_count, upper_bound_count):
     """Returns the number of subjects arrested on drug charges a number of 
     times in the range lower-upper"""
