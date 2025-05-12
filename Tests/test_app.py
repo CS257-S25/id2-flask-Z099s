@@ -22,7 +22,7 @@ class FlaskAppTest(unittest.TestCase):
             b'<strong>Welcome to the Flask App!'))
 
     def test_data_overview(self):
-        """Get /dataOverview should return something the loaded data."""
+        """Get /dataOverview should return the loaded data."""
         response = self.client.get('/dataOverview')
         self.assertEqual(response.status_code, 200)
         self.assertGreater(len(response.data), 0)
